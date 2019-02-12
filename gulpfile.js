@@ -6,6 +6,8 @@ const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const cssnano = require('gulp-cssnano');
 const browsersync = require("browser-sync").create();
+const gutil = require('gulp-util');
+const ftp = require('vinyl-ftp');
 
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
@@ -116,5 +118,44 @@ function copyAssets(cb) {
 
 }
 
+
+
+/** Configuration **/
+var user = process.env.FTP_USER
+var password = process.env.FTP_PWD
+var host = 'ftp.hrmdrum.vot.pl';
+var port = 21
+var localFilesGlob = ['dist/**/*'];
+var remoteFolder = '/domains/michaldziadkowiec.pl/public_html';
+
+// helper function to build an FTP connection based on our configuration
+function getFtpConnection() {
+  return ftp.create({
+    host: host,
+    port: port,
+    user: user,
+    password: password,
+    parallel: 5,
+    log: gutil.log,
+  })
+}
+
+/**
+ * Deploy task.
+ * Copies the new files to the server
+ *
+ * Usage: `FTP_USER=someuser FTP_PWD=somepwd gulp ftp-deploy`
+ */
+function deploy(cb) {
+  var conn = getFtpConnection()
+
+
+  src(localFilesGlob, { base: './dist', buffer: false })
+    .pipe(conn.newer(remoteFolder)) // only upload newer files
+    .pipe(conn.dest(remoteFolder))
+  cb()
+};
+
 exports.default = series(styles, jsDev, html, bSync, watchFiles);
 exports.build = series(copyAssets, cssMin, jsProd);
+exports.upload = series(deploy);
