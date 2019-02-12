@@ -1,6 +1,6 @@
-.lol {
-  margin: percentage(2/4);
-} 
+
+
+@import 'base/global';
 
 html {
   padding: 0;
@@ -11,4 +11,8 @@ html {
 h1 {
   color: green;
   font-size: 124px;
+}
+
+.links a {
+  color: #fff; 
 }

@@ -1,3 +1,3 @@
-const x = (arg) => alert(arg);
+const x = (arg) => console.log(arg);
 
-x('hahahsafasfasfasasffasaha');
+x('test JS');
