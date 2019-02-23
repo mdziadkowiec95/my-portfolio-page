@@ -425,7 +425,6 @@ a:link, a:visited {
 
 .card {
   display: block;
-  max-width: 250px;
   -webkit-transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   padding-top: 15rem;
@@ -436,17 +435,17 @@ a:link, a:visited {
   -webkit-box-shadow: rgba(102, 102, 102, 0.9) 0 30px 60px 0;
           box-shadow: rgba(102, 102, 102, 0.9) 0 30px 60px 0; }
   .card-wrap {
-    max-width: 250px;
+    max-width: 400px;
     -webkit-transform: perspective(1000px);
             transform: perspective(1000px);
     -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d; }
     .card-wrap:hover .card {
-      -webkit-transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-      transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1); }
+      -webkit-transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1); }
     .card-wrap .card {
-      -webkit-transition: all 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-      transition: all 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95); }
+      -webkit-transition: all 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+      transition: all 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95); }
   .card:hover {
     border-color: #fff; }
   .card--travelize {

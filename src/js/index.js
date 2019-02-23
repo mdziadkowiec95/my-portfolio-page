@@ -1,4 +1,22 @@
 
+if (!Element.prototype.matches) {
+  Element.prototype.matches = Element.prototype.msMatchesSelector ||
+    Element.prototype.webkitMatchesSelector;
+}
+
+if (!Element.prototype.closest) {
+  Element.prototype.closest = function (s) {
+    var el = this;
+
+    do {
+      if (el.matches(s)) return el;
+      el = el.parentElement || el.parentNode;
+    } while (el !== null && el.nodeType === 1);
+    return null;
+  };
+}
+
+
 const throttle = (func, limit) => {
   let inThrottle
   return function () {
@@ -12,38 +30,51 @@ const throttle = (func, limit) => {
   }
 }
 
+console.log(('ontouchstart' in document.documentElement));
 
-const cards = document.querySelectorAll('.card-wrap');
 
-const runCardAnimation = e => {
-  const target = e.target.closest('.card') || e.target.children[0];
-  const cardOffsetTop = target.parentNode.offsetTop;
-  const cardOffsetLeft = target.parentNode.offsetLeft;
-  const cardWidth = target.offsetWidth;
-  const cardHeight = target.offsetHeight;
+const isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g);
+const isTouchDevice = 'ontouchstart' in document.documentElement;
 
-  const setCardPosition = e => {
-    console.log(e);
 
-    if (target) {
-      console.log(cardOffsetTop);
-      target.style.transform = `
-      rotateX(${-(e.pageY - cardOffsetTop - (cardHeight / 2)) * 0.1}deg) 
-      rotateY(${(e.pageX - cardOffsetLeft - (cardWidth / 2)) * 0.12}deg)
-    `;
+if (!isIE && !isTouchDevice) {
+  const cards = [].slice.call(document.querySelectorAll('.card-wrap'));
+  let isHovered = false;
+
+  const runCardAnimation = e => {
+    if (!isHovered) {
+      isHovered = true;
+      const target = e.target.closest('.card') || e.target.children[0],
+        cardOffsetTop = target.parentNode.offsetTop,
+        cardOffsetLeft = target.parentNode.offsetLeft,
+        cardWidth = target.offsetWidth,
+        cardHeight = target.offsetHeight;
+
+      console.log(cardOffsetLeft, cardOffsetTop, cardWidth, cardHeight);
+
+      const setCardPosition = e => {
+        if (target) {
+
+          target.style.transform = `
+            rotateX(${-(e.clientY - cardOffsetTop - (cardHeight / 2)) * 0.1}deg) 
+            rotateY(${(e.clientX - cardOffsetLeft - (cardWidth / 2)) * 0.1}deg)
+        `;
+        }
+
+      };
+      target.addEventListener('mousemove', throttle(setCardPosition, 200));
     }
 
   };
 
-  target.addEventListener('mousemove', throttle(setCardPosition, 150));
-};
+  const destroyCardAnimation = e => {
+    const card = e.target.closest('.card') || e.target.children[0];
+    card.style = '';
 
-const destroyCardAnimation = e => {
-  const card = e.target.closest('.card') || e.target.children[0];
+    isHovered = false;
+  };
 
-  console.log(card);
-  card.style.transform = 'rotate(0deg)';
-};
+  cards.forEach(card => card.addEventListener('mouseenter', runCardAnimation));
+  cards.forEach(card => card.addEventListener('mouseleave', destroyCardAnimation));
+}
 
-cards.forEach(card => card.addEventListener('mouseover', throttle(runCardAnimation, 150)));
-cards.forEach(card => card.addEventListener('mouseleave', destroyCardAnimation));
