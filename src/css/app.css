@@ -424,12 +424,17 @@ a:link, a:visited {
       max-width: 1270px; } }
 
 .card {
-  width: 400px;
-  height: 260px;
+  width: 300px;
+  height: 220px;
+  margin: 2rem auto;
   -webkit-transform: perspective(1000px);
           transform: perspective(1000px);
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d; }
+  @media (min-width: 576px) {
+    .card {
+      width: 400px;
+      height: 260px; } }
   .card:hover .card__inner {
     -webkit-transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
     transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1); }
@@ -449,21 +454,20 @@ a:link, a:visited {
     .card__inner:hover {
       border-color: #fff; }
     .card__inner--travelize {
-      background: url("../images/projects-travelize.png") no-repeat center/cover; }
+      background: url("../images/projects-travelize.jpg") no-repeat center/cover; }
     .card__inner--movie-hunter {
-      background: url("../images/projects-movie-hunter.png") no-repeat center/cover; }
+      background: url("../images/projects-movie-hunter.jpg") no-repeat center/cover; }
   .card__title {
     margin: .2rem 0 0 .2rem;
     font-weight: 300; }
 
 .projects {
   padding: 4rem 0; }
-  .projects__cards {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around; }
+  @media (min-width: 992px) {
+    .projects__cards {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; } }
 
 * {
   padding: 0;

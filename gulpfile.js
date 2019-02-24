@@ -157,5 +157,5 @@ function deploy(cb) {
 };
 
 exports.default = series(styles, jsDev, html, bSync, watchFiles);
-exports.build = series(copyAssets, cssMin, jsProd);
+exports.build = series(copyAssets, styles, cssMin, jsProd);
 exports.upload = series(deploy);

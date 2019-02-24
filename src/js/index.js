@@ -30,52 +30,55 @@ const throttle = (func, limit) => {
   }
 }
 
+document.documentElement.addEventListener('mousemove', throttle);
+document.documentElement.removeEventListener('mousemove', throttle);
+
 console.log('Touch device: ' + ('ontouchstart' in document.documentElement));
 
 
 const isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g);
 const isTouchDevice = 'ontouchstart' in document.documentElement;
 
+const cardMaxWidth = 400; // maximum possible card width
 
 if (!isIE && !isTouchDevice) {
-  const cards = [].slice.call(document.querySelectorAll('.card')),
-    rotateFactor = 0.07; // set how big rotation should be
-  let isHovered = false;
+  const cards = [].slice.call(document.querySelectorAll('.card'));
 
   const runCardAnimation = e => {
-    if (!isHovered) {
-      isHovered = true;
 
-      const target = e.target.closest('.card__inner') || e.target.children[0],
-        cardOffsetTop = target.parentNode.offsetTop,
-        cardOffsetLeft = target.parentNode.offsetLeft,
-        cardWidth = target.offsetWidth,
-        cardHeight = target.offsetHeight;
-      let rY, rX;
+    const cardInner = e.target.closest('.card__inner') || e.target.children[0],
+      cardWrapper = cardInner.parentNode,
+      cardOffsetTop = cardWrapper.offsetTop,
+      cardOffsetLeft = cardWrapper.offsetLeft,
+      cardWidth = cardWrapper.offsetWidth,
+      cardHeight = cardWrapper.offsetHeight,
+      rotationFactor = cardWidth / cardMaxWidth * 0.07; // calculate rotation (more narrow card === softer rotation)
+    let rY, rX; // rotation angles
 
+    const setCardPosition = e => {
+      if (cardInner) {
+        rX = -((e.pageY - cardOffsetTop - (cardHeight / 2)) * rotationFactor).toFixed(2);
+        rY = ((e.pageX - cardOffsetLeft - (cardWidth / 2)) * rotationFactor).toFixed(2);
 
+        cardInner.style.transform = `rotateX(${rX}deg) rotateY(${rY}deg)`;
+      }
+    };
+    const throttledPositionHandler = throttle(setCardPosition, 150);
 
-      const setCardPosition = e => {
-        if (target) {
-          rX = -(e.pageY - cardOffsetTop - (cardHeight / 2)).toFixed(2) * rotateFactor;
-          rY = (e.pageX - cardOffsetLeft - (cardWidth / 2)).toFixed(2) * rotateFactor;
+    cardWrapper.addEventListener('mousemove', throttledPositionHandler);
 
-          target.style.transform = `rotateX(${rX}deg) rotateY(${rY}deg)`;
-        }
-      };
-      target.addEventListener('mousemove', throttle(setCardPosition, 200));
-    }
+    const resetCardAnimation = e => {
+      cardInner.style = '';
+      cardWrapper.removeEventListener('mousemove', throttledPositionHandler);
+      cardWrapper.removeEventListener('mouseleave', resetCardAnimation);
+    };
+
+    cardWrapper.addEventListener('mouseleave', resetCardAnimation);
 
   };
 
-  const resetCardAnimation = e => {
-    const card = e.target.closest('.card__inner') || e.target.children[0];
-    card.style = '';
-
-    isHovered = false;
-  };
-
+  // attach listener for hovering card
   cards.forEach(card => card.addEventListener('mouseenter', runCardAnimation));
-  cards.forEach(card => card.addEventListener('mouseleave', resetCardAnimation));
+
 }
 

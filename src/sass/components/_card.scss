@@ -1,8 +1,14 @@
 .card {
-    width: 400px;
-    height: 260px;     
+    width: 300px;
+    height: 220px; 
+    margin: 2rem auto;    
     transform: perspective(1000px);
     transform-style: preserve-3d;
+
+    @include breakpoint(xs) {
+      width: 400px;
+      height: 260px;
+    }
 
     &:hover {
       .card__inner {
@@ -35,11 +41,11 @@
       // transform: rotateX(20deg);
     } 
     &--travelize {
-      background: url('../images/projects-travelize.png') no-repeat center / cover;
+      background: url('../images/projects-travelize.jpg') no-repeat center / cover;
     }
 
     &--movie-hunter {
-      background: url('../images/projects-movie-hunter.png') no-repeat center / cover;
+      background: url('../images/projects-movie-hunter.jpg') no-repeat center / cover;
     } 
   } 
 

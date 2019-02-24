@@ -8,4 +8,7 @@
   @else if $point == sm {
     @media (min-width: 768px)  { @content; }
   }
+  @else if $point == xs {
+    @media (min-width: 576px)  { @content; }
+  }
 } 
