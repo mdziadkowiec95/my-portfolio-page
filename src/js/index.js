@@ -49,25 +49,25 @@ if (!isIE && !isTouchDevice) {
         cardOffsetLeft = target.parentNode.offsetLeft,
         cardWidth = target.offsetWidth,
         cardHeight = target.offsetHeight;
+      let rY, rX;
 
-      console.log(cardOffsetLeft, cardOffsetTop, cardWidth, cardHeight);
+
 
       const setCardPosition = e => {
         if (target) {
+          console.log(cardOffsetTop, cardHeight, e.clientY);
+          rX = -(e.pageY - cardOffsetTop - (cardHeight / 2)).toFixed(2) * 0.1;
+          rY = (e.pageX - cardOffsetLeft - (cardWidth / 2)).toFixed(2) * 0.1;
 
-          target.style.transform = `
-            rotateX(${-(e.clientY - cardOffsetTop - (cardHeight / 2)) * 0.1}deg) 
-            rotateY(${(e.clientX - cardOffsetLeft - (cardWidth / 2)) * 0.1}deg)
-        `;
+          target.style.transform = `rotateX(${rX}deg) rotateY(${rY}deg)`;
         }
-
       };
       target.addEventListener('mousemove', throttle(setCardPosition, 200));
     }
 
   };
 
-  const destroyCardAnimation = e => {
+  const resetCardAnimation = e => {
     const card = e.target.closest('.card') || e.target.children[0];
     card.style = '';
 
@@ -75,6 +75,6 @@ if (!isIE && !isTouchDevice) {
   };
 
   cards.forEach(card => card.addEventListener('mouseenter', runCardAnimation));
-  cards.forEach(card => card.addEventListener('mouseleave', destroyCardAnimation));
+  cards.forEach(card => card.addEventListener('mouseleave', resetCardAnimation));
 }
 
