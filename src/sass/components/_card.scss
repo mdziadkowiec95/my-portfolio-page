@@ -1,45 +1,51 @@
 .card {
-
-  &-wrap {
-    max-width: 400px;    
+    width: 400px;
+    height: 260px;     
     transform: perspective(1000px);
     transform-style: preserve-3d;
 
     &:hover {
-      .card {
+      .card__inner {
         transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
       } 
     }
+  
+  &__inner {
+    display: block;
 
-    .card {
-      transition: all 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    height: 100%;
+
+    transition: all 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+    border: 1px solid darken(map-get($colors, white), 50%);
+    border-radius: .5rem;
+
+    color: map-get($colors, white); 
+
+    cursor: pointer;
+
+    box-shadow: rgba(#666, 0.9) 0 30px 60px 0;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    &:hover {
+      border-color: map-get($colors, white);
+
+      // transform: rotateX(20deg);
+    } 
+    &--travelize {
+      background: url('../images/projects-travelize.png') no-repeat center / cover;
     }
+
+    &--movie-hunter {
+      background: url('../images/projects-movie-hunter.png') no-repeat center / cover;
+    } 
+  } 
+
+  &__title {
+    margin: .2rem 0 0 .2rem;
+    font-weight: 300;
   }
   
-  display: block;
-
-  // max-width: 250px;
-
-  transition: all .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-
-  padding-top: 15rem;
-
-  border: 1px solid darken(map-get($colors, white), 50%);
-  border-radius: .5rem;
-
-  color: map-get($colors, white); 
-
-  cursor: pointer;
-
-  box-shadow:
-  rgba(#666, 0.9) 0 30px 60px 0;
-
-  &:hover {
-    border-color: map-get($colors, white);
-
-    // transform: rotateX(20deg);
-  }
-  &--travelize {
-    background: url('../images/projects-travelize.png') no-repeat center / cover;
-  }
 }

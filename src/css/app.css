@@ -424,35 +424,46 @@ a:link, a:visited {
       max-width: 1270px; } }
 
 .card {
-  display: block;
-  -webkit-transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  padding-top: 15rem;
-  border: 1px solid gray;
-  border-radius: .5rem;
-  color: #fff;
-  cursor: pointer;
-  -webkit-box-shadow: rgba(102, 102, 102, 0.9) 0 30px 60px 0;
-          box-shadow: rgba(102, 102, 102, 0.9) 0 30px 60px 0; }
-  .card-wrap {
-    max-width: 400px;
-    -webkit-transform: perspective(1000px);
-            transform: perspective(1000px);
-    -webkit-transform-style: preserve-3d;
-            transform-style: preserve-3d; }
-    .card-wrap:hover .card {
-      -webkit-transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-      transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1); }
-    .card-wrap .card {
-      -webkit-transition: all 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-      transition: all 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95); }
-  .card:hover {
-    border-color: #fff; }
-  .card--travelize {
-    background: url("../images/projects-travelize.png") no-repeat center/cover; }
+  width: 400px;
+  height: 260px;
+  -webkit-transform: perspective(1000px);
+          transform: perspective(1000px);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d; }
+  .card:hover .card__inner {
+    -webkit-transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1); }
+  .card__inner {
+    display: block;
+    height: 100%;
+    -webkit-transition: all 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transition: all 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    border: 1px solid gray;
+    border-radius: .5rem;
+    color: #fff;
+    cursor: pointer;
+    -webkit-box-shadow: rgba(102, 102, 102, 0.9) 0 30px 60px 0;
+            box-shadow: rgba(102, 102, 102, 0.9) 0 30px 60px 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; }
+    .card__inner:hover {
+      border-color: #fff; }
+    .card__inner--travelize {
+      background: url("../images/projects-travelize.png") no-repeat center/cover; }
+    .card__inner--movie-hunter {
+      background: url("../images/projects-movie-hunter.png") no-repeat center/cover; }
+  .card__title {
+    margin: .2rem 0 0 .2rem;
+    font-weight: 300; }
 
 .projects {
   padding: 4rem 0; }
+  .projects__cards {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around; }
 
 * {
   padding: 0;

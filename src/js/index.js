@@ -30,7 +30,7 @@ const throttle = (func, limit) => {
   }
 }
 
-console.log(('ontouchstart' in document.documentElement));
+console.log('Touch device: ' + ('ontouchstart' in document.documentElement));
 
 
 const isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g);
@@ -38,13 +38,15 @@ const isTouchDevice = 'ontouchstart' in document.documentElement;
 
 
 if (!isIE && !isTouchDevice) {
-  const cards = [].slice.call(document.querySelectorAll('.card-wrap'));
+  const cards = [].slice.call(document.querySelectorAll('.card')),
+    rotateFactor = 0.07; // set how big rotation should be
   let isHovered = false;
 
   const runCardAnimation = e => {
     if (!isHovered) {
       isHovered = true;
-      const target = e.target.closest('.card') || e.target.children[0],
+
+      const target = e.target.closest('.card__inner') || e.target.children[0],
         cardOffsetTop = target.parentNode.offsetTop,
         cardOffsetLeft = target.parentNode.offsetLeft,
         cardWidth = target.offsetWidth,
@@ -55,9 +57,8 @@ if (!isIE && !isTouchDevice) {
 
       const setCardPosition = e => {
         if (target) {
-          console.log(cardOffsetTop, cardHeight, e.clientY);
-          rX = -(e.pageY - cardOffsetTop - (cardHeight / 2)).toFixed(2) * 0.1;
-          rY = (e.pageX - cardOffsetLeft - (cardWidth / 2)).toFixed(2) * 0.1;
+          rX = -(e.pageY - cardOffsetTop - (cardHeight / 2)).toFixed(2) * rotateFactor;
+          rY = (e.pageX - cardOffsetLeft - (cardWidth / 2)).toFixed(2) * rotateFactor;
 
           target.style.transform = `rotateX(${rX}deg) rotateY(${rY}deg)`;
         }
@@ -68,7 +69,7 @@ if (!isIE && !isTouchDevice) {
   };
 
   const resetCardAnimation = e => {
-    const card = e.target.closest('.card') || e.target.children[0];
+    const card = e.target.closest('.card__inner') || e.target.children[0];
     card.style = '';
 
     isHovered = false;
