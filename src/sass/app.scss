@@ -1,6 +1,7 @@
 
 
 @import '../../node_modules/normalize-scss/sass/normalize/import-now';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
 
 // @include normalize(); 
 
@@ -10,6 +11,7 @@
 @import 'base/layout'; 
  
 @import 'components/card'; 
+@import 'sections/header';  
 @import 'sections/projects';  
 
 * {
@@ -17,6 +19,10 @@
   margin: 0;
   box-sizing: border-box;
 }  
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
  
 h1 {
   color: #fff; 

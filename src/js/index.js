@@ -30,8 +30,8 @@ const throttle = (func, limit) => {
   }
 }
 
-document.documentElement.addEventListener('mousemove', throttle);
-document.documentElement.removeEventListener('mousemove', throttle);
+// document.documentElement.addEventListener('mousemove', throttle);
+// document.documentElement.removeEventListener('mousemove', throttle);
 
 console.log('Touch device: ' + ('ontouchstart' in document.documentElement));
 
@@ -42,7 +42,7 @@ const isTouchDevice = 'ontouchstart' in document.documentElement;
 const cardMaxWidth = 400; // maximum possible card width
 
 if (!isIE && !isTouchDevice) {
-  const cards = [].slice.call(document.querySelectorAll('.card'));
+  const cards = [].slice.call(document.querySelectorAll('.card__wrapper'));
 
   const runCardAnimation = e => {
 
@@ -60,7 +60,12 @@ if (!isIE && !isTouchDevice) {
         rX = -((e.pageY - cardOffsetTop - (cardHeight / 2)) * rotationFactor).toFixed(2);
         rY = ((e.pageX - cardOffsetLeft - (cardWidth / 2)) * rotationFactor).toFixed(2);
 
-        cardInner.style.transform = `rotateX(${rX}deg) rotateY(${rY}deg)`;
+        const style = `rotateX(${rX}deg) rotateY(${rY}deg)`;
+        cardInner.style.transform = style;
+        cardInner.style.webkitTransform = style;
+        cardInner.style.mozTransform = style;
+        cardInner.style.msTransform = style;
+        cardInner.style.oTransform = style;
       }
     };
     const throttledPositionHandler = throttle(setCardPosition, 150);

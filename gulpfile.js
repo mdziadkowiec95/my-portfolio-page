@@ -55,7 +55,7 @@ function styles(cb) {
     .pipe(sourcemaps.init())
     .pipe(sass(css.sassOptions))
     .pipe(autoprefixer({
-      browsers: ['last 2 versions', '> 2%']
+      browsers: ['last 2 versions', '> 1%']
     }))
     .pipe(sourcemaps.write('.'))
     .pipe(dest(css.out))

@@ -6,6 +6,7 @@
      * 2. Prevent adjustments of font size after orientation changes in
      *    IE on Windows Phone and in iOS.
      */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
 html {
   line-height: 1.15;
   /* 1 */
@@ -406,6 +407,11 @@ template {
 [hidden] {
   display: none; }
 
+body {
+  background-image: linear-gradient(-225deg, #3D4E81 0%, #5753C9 48%, #6E7FF3 100%);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh; }
+
 a:link, a:visited {
   text-decoration: none; }
 
@@ -424,42 +430,61 @@ a:link, a:visited {
       max-width: 1270px; } }
 
 .card {
-  width: 300px;
-  height: 220px;
+  display: block;
   margin: 2rem auto;
-  -webkit-transform: perspective(1000px);
-          transform: perspective(1000px);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d; }
+  width: 300px;
+  height: 220px; }
   @media (min-width: 576px) {
     .card {
-      width: 400px;
-      height: 260px; } }
-  .card:hover .card__inner {
-    -webkit-transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-    transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1); }
+      width: 350px;
+      height: 240px; } }
+  @media (min-width: 992px) {
+    .card {
+      width: 300px;
+      height: 220px; } }
+  @media (min-width: 1300px) {
+    .card {
+      width: 350px;
+      height: 240px; } }
+  .card__wrapper {
+    -webkit-transform: perspective(1000px);
+            transform: perspective(1000px);
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+    cursor: pointer;
+    z-index: 0; }
+    .card__wrapper:hover .card__inner {
+      -webkit-transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1); }
   .card__inner {
     display: block;
     height: 100%;
     -webkit-transition: all 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
     transition: all 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    border: 1px solid gray;
     border-radius: .5rem;
     color: #fff;
-    cursor: pointer;
-    -webkit-box-shadow: rgba(102, 102, 102, 0.9) 0 30px 60px 0;
-            box-shadow: rgba(102, 102, 102, 0.9) 0 30px 60px 0;
+    -webkit-box-shadow: rgba(51, 51, 51, 0.9) 0 30px 60px 0;
+            box-shadow: rgba(51, 51, 51, 0.9) 0 30px 60px 0;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden; }
-    .card__inner:hover {
-      border-color: #fff; }
     .card__inner--travelize {
       background: url("../images/projects-travelize.jpg") no-repeat center/cover; }
     .card__inner--movie-hunter {
       background: url("../images/projects-movie-hunter.jpg") no-repeat center/cover; }
+    .card__inner--recipes {
+      background: url("../images/projects-recipes.jpg") no-repeat center/cover; }
   .card__title {
     margin: .2rem 0 0 .2rem;
     font-weight: 300; }
+
+.header {
+  padding: 2rem 0; }
+  .header__square {
+    padding: 1.5rem;
+    border: 5px solid #fff;
+    -webkit-box-shadow: 0 0 10px #333;
+            box-shadow: 0 0 10px #333;
+    text-align: center; }
 
 .projects {
   padding: 4rem 0; }
@@ -474,6 +499,9 @@ a:link, a:visited {
   margin: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box; }
+
+body {
+  font-family: 'Open Sans', sans-serif; }
 
 h1 {
   color: #fff; }

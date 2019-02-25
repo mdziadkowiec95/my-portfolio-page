@@ -1,20 +1,42 @@
 .card {
+  display: block;
+  margin: 2rem auto;
+  width: 300px;
+  height: 220px;
+
+  @include breakpoint(xs) {
+    width: 350px;
+    height: 240px;
+  }
+
+  @include breakpoint(md) {
     width: 300px;
-    height: 220px; 
-    margin: 2rem auto;    
+    height: 220px;
+  }
+
+  @include breakpoint(lg) {
+    width: 350px;
+    height: 240px;
+  }
+
+  &__wrapper {
+    
+    
     transform: perspective(1000px);
     transform-style: preserve-3d;
-
-    @include breakpoint(xs) {
-      width: 400px;
-      height: 260px;
-    }
+    cursor: pointer;
+    z-index: 0;
+    
+    
+   
 
     &:hover {
-      .card__inner {
+      .card__inner {  
         transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-      } 
+      }  
     }
+  }
+   
   
   &__inner {
     display: block;
@@ -23,35 +45,36 @@
 
     transition: all 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
-    border: 1px solid darken(map-get($colors, white), 50%);
     border-radius: .5rem;
 
     color: map-get($colors, white); 
 
-    cursor: pointer;
-
-    box-shadow: rgba(#666, 0.9) 0 30px 60px 0;
+    box-shadow: rgba(#333, 0.9) 0 30px 60px 0;
 
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 
-    &:hover {
-      border-color: map-get($colors, white);
-
-      // transform: rotateX(20deg);
-    } 
     &--travelize {
       background: url('../images/projects-travelize.jpg') no-repeat center / cover;
     }
 
     &--movie-hunter {
       background: url('../images/projects-movie-hunter.jpg') no-repeat center / cover;
+    }  
+    
+    &--recipes {
+      background: url('../images/projects-recipes.jpg') no-repeat center / cover;
+    } 
+
+    &:hover {
+      // border-color: map-get($colors, white);
+      // outline-color: map-get($colors, white);
     } 
   } 
 
   &__title {
     margin: .2rem 0 0 .2rem;
-    font-weight: 300;
+    font-weight: 300; 
   }
   
 }

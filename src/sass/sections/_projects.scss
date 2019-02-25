@@ -1,8 +1,9 @@
 .projects {
+  // background-image: linear-gradient(-225deg, #3D4E81 0%, #5753C9 48%, #6E7FF3 100%);
   padding: 4rem 0;
 
   &__cards {
-   @include breakpoint(md) {
+   @include breakpoint(md) { 
      display: flex;
    } 
   }
