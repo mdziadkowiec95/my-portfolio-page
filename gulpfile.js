@@ -8,6 +8,7 @@ const cssnano = require('gulp-cssnano');
 const browsersync = require("browser-sync").create();
 const gutil = require('gulp-util');
 const ftp = require('vinyl-ftp');
+const plumber = require('gulp-plumber');
 
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
@@ -52,6 +53,7 @@ function watchFiles() {
 
 function styles(cb) {
   src(css.in)
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(sass(css.sassOptions))
     .pipe(autoprefixer({
@@ -75,6 +77,7 @@ function jsProd(cb) {
 
 function jsDev(cb) {
   src('src/js/index.js')
+    .pipe(plumber())
     .pipe(webpackStream(webpackConfigDev), webpack)
     .pipe(dest('src/js'))
   browsersync.reload()

@@ -49,7 +49,7 @@
 
     color: map-get($colors, white); 
 
-    box-shadow: rgba(#333, 0.9) 0 30px 60px 0;
+    box-shadow: rgba(#333, 0.9) 0 30px 60px 0, rgba(#333, 0.9) 0 30px 60px 0 inset;
 
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;

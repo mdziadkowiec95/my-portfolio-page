@@ -1,3 +1,17 @@
 $colors: (
   white: #fff,
+  accent: #B09A68,
+  dark: #080709,
+  dark--lighten: #4C4232,
 );
+
+$layers: (
+  nav: 1000,
+  nav-toggler: 1100,
+);
+
+$easings: (
+  easeOutEx: cubic-bezier(0.19, 1, 0.22, 1),
+);
+
+$font-primary: 'Montserrat', sans-serif;

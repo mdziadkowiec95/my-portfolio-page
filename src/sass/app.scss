@@ -2,32 +2,28 @@
 
 @import '../../node_modules/normalize-scss/sass/normalize/import-now';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,700');
 
-// @include normalize(); 
+@include normalize();
 
-@import 'base/global';
 @import 'utils/variables';
 @import 'utils/mixins';
+@import 'utils/animations';
+
+@import 'base/global';
+@import 'base/typography';
+
 @import 'base/layout'; 
- 
+
+@import 'components/buttons'; 
+@import 'components/nav'; 
 @import 'components/card'; 
+
+
 @import 'sections/header';  
 @import 'sections/projects';  
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}  
 
 body {
   font-family: 'Open Sans', sans-serif;
-}
- 
-h1 {
-  color: #fff; 
-}
-
-.links a {
-  color: #fff; 
 }

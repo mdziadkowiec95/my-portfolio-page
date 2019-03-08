@@ -1,3 +1,5 @@
+import './components/navigation';
+
 
 if (!Element.prototype.matches) {
   Element.prototype.matches = Element.prototype.msMatchesSelector ||
@@ -60,7 +62,7 @@ if (!isIE && !isTouchDevice) {
         rX = -((e.pageY - cardOffsetTop - (cardHeight / 2)) * rotationFactor).toFixed(2);
         rY = ((e.pageX - cardOffsetLeft - (cardWidth / 2)) * rotationFactor).toFixed(2);
 
-        const style = `rotateX(${rX}deg) rotateY(${rY}deg)`;
+        const style = `translateZ(1px) rotateX(${rX}deg) rotateY(${rY}deg)`;
         cardInner.style.transform = style;
         cardInner.style.webkitTransform = style;
         cardInner.style.mozTransform = style;
