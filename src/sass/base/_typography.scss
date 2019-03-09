@@ -1,3 +1,29 @@
+body {
+  font-family: $font-primary;
+}
+
 h1, h2, h3, h4 {
   font-family: $font-primary;
+}
+
+button {
+  border: 0;
+}
+
+
+a:focus {
+  outline: 1px dotted map-get($colors, white);
+}
+
+a:link,
+a:visited {  
+  color: map-get($colors, white);
+  
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
 }

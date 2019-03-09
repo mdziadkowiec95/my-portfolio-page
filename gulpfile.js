@@ -1,19 +1,21 @@
 const { src, dest, series, parallel, watch } = require('gulp');
 
-const del = require('del');
-const sass = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer');
-const sourcemaps = require('gulp-sourcemaps');
-const cssnano = require('gulp-cssnano');
-const browsersync = require("browser-sync").create();
-const gutil = require('gulp-util');
-const ftp = require('vinyl-ftp');
-const plumber = require('gulp-plumber');
-
-const webpack = require('webpack');
-const webpackStream = require('webpack-stream');
-const webpackConfigDev = require('./webpack.config.dev.js');
-const webpackConfigProd = require('./webpack.config.prod.js');
+const del = require('del'),
+  sass = require('gulp-sass'),
+  scsslint = require('gulp-scss-lint'),
+  autoprefixer = require('gulp-autoprefixer'),
+  sourcemaps = require('gulp-sourcemaps'),
+  cssnano = require('gulp-cssnano'),
+  replace = require('gulp-replace'),
+  browsersync = require("browser-sync").create(),
+  gutil = require('gulp-util'),
+  ftp = require('vinyl-ftp'),
+  plumber = require('gulp-plumber'),
+  imagemin = require("gulp-imagemin"),
+  webpack = require('webpack'),
+  webpackStream = require('webpack-stream'),
+  webpackConfigDev = require('./webpack.config.dev.js'),
+  webpackConfigProd = require('./webpack.config.prod.js');
 
 const dist = 'dist/';
 const source = 'src/';
@@ -21,7 +23,7 @@ const source = 'src/';
 // stylesheet paths and settings
 const css = {
   in: source + 'sass/app.scss',
-  out: source + 'css',
+  out: source + 'assets/css',
   build: dist + 'css',
   sassOptions: {
     // outputStyle: 'compressed',
@@ -29,6 +31,19 @@ const css = {
   },
   watch: source + "sass/**/*.scss"
 };
+
+const js = {
+  in: source + 'js/index.js',
+  out: source + 'assets/js',
+  build: dist + 'js',
+  watch: source + 'js/**/*.js',
+
+};
+
+const img = {
+  in: source + 'assets/images/**/*',
+  out: dist + 'images',
+}
 
 // BrowserSync settings
 const syncOpts = {
@@ -43,12 +58,14 @@ const syncOpts = {
 
 // TASKS
 function clean(cb) {
-  del([dist + "*"])
+  del([dist + "**/*"])
+
   cb()
 }
 
 function watchFiles() {
   watch(css.watch, series(styles))
+  watch(js.watch, series(jsDev))
 }
 
 function styles(cb) {
@@ -66,24 +83,54 @@ function styles(cb) {
   cb()
 }
 
+function scssLint(cb) {
+  src(source + 'sass/**/*/.scss')
+    .pipe(scsslint({
+      'config': 'scss-lint.yml',
+    }))
+
+  cb()
+}
 
 
 function jsProd(cb) {
-  src('src/js/index.js')
+  src(js.in)
     .pipe(webpackStream(webpackConfigProd), webpack)
-    .pipe(dest('dist/js'))
+    .pipe(dest(js.build))
   cb()
 }
 
 function jsDev(cb) {
-  src('src/js/index.js')
+  src(js.in)
     .pipe(plumber())
     .pipe(webpackStream(webpackConfigDev), webpack)
-    .pipe(dest('src/js'))
+    .pipe(dest(js.out))
   browsersync.reload()
   cb()
 }
 
+function images(cb) {
+  src(img.in)
+    // .pipe(newer(dist + 'images/**/*'))
+    .pipe(
+      imagemin([
+        imagemin.gifsicle({ interlaced: true }),
+        imagemin.jpegtran({ progressive: true }),
+        imagemin.optipng({ optimizationLevel: 5 }),
+        imagemin.svgo({
+          plugins: [
+            {
+              removeViewBox: false,
+              collapseGroups: true
+            }
+          ]
+        })
+      ])
+    )
+    .pipe(dest(img.out))
+
+  cb()
+}
 
 
 function html(cb) {
@@ -95,21 +142,21 @@ function html(cb) {
 
 function bSync(cb) {
   browsersync.init(syncOpts)
-  watch(source + 'js/index.js', jsDev)
 
   cb()
 }
 
 function cssMin(cb) {
-  src('src/css/**/*.css')
+  src(css.out + '/*.css')
     .pipe(cssnano())
+    // .pipe(replace('../../images/', '../images/'))
     .pipe(dest('dist/css'))
 
   cb()
 }
 
 
-function copyAssets(cb) {
+function copyFiles(cb) {
   const html = 'src/**/*.html';
 
   src([html], {
@@ -159,6 +206,7 @@ function deploy(cb) {
   cb()
 };
 
-exports.default = series(styles, jsDev, html, bSync, watchFiles);
-exports.build = series(copyAssets, styles, cssMin, jsProd);
+exports.default = series(styles, scssLint, jsDev, html, bSync, watchFiles);
+exports.build = series(cssMin, jsProd, copyFiles);
 exports.upload = series(deploy);
+exports.cssMin = series(cssMin);

@@ -1,4 +1,5 @@
 import './components/navigation';
+import './components/mailer';
 
 
 if (!Element.prototype.matches) {

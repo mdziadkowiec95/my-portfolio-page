@@ -20,7 +20,7 @@
 }
 
 
-@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false){
+@mixin triangle($color, $direction, $size: 6px, $position: absolute, $round: false){
   @include pseudo($pos: $position);
   width: 0;
   height: 0;
@@ -48,6 +48,11 @@
       border-right: $size solid $color;
       margin-left: -$size;
   }
+}
+
+@mixin backfaceHidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 

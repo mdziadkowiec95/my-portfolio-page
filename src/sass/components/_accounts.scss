@@ -1,0 +1,29 @@
+.accounts {  
+  position: absolute;
+
+  top: 50%;
+  left: 0;
+
+  transform: translateY(-50%);
+
+  background-color: lighten(map-get($colors, dark), 5%);
+
+  @include backfaceHidden();  
+
+
+  &__icon {
+    display: block;
+
+    padding: 1.2rem;
+    
+    opacity: .7; 
+
+    transition: background-color .25s ease, opacity .25s ease;    
+
+    &:hover {
+      background-color: map-get($colors, accent); 
+
+      opacity: 1;
+    }
+  }
+}

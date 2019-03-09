@@ -1,8 +1,12 @@
 
 
 @import '../../node_modules/normalize-scss/sass/normalize/import-now';
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,700');
+// @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,600,700');
+
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome"; 
+// @import "../../node_modules/@fortawesome/fontawesome-free/scss/solid"; 
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/brands"; 
 
 @include normalize();
 
@@ -17,13 +21,11 @@
 
 @import 'components/buttons'; 
 @import 'components/nav'; 
+@import 'components/accounts'; 
+@import 'components/intro'; 
+@import 'components/scroll-down'; 
 @import 'components/card'; 
 
 
 @import 'sections/header';  
 @import 'sections/projects';  
-
-
-body {
-  font-family: 'Open Sans', sans-serif;
-}
