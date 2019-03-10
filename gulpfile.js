@@ -1,6 +1,7 @@
 const { src, dest, series, parallel, watch } = require('gulp');
 
 const del = require('del'),
+  size = require('gulp-size'),
   sass = require('gulp-sass'),
   scsslint = require('gulp-scss-lint'),
   autoprefixer = require('gulp-autoprefixer'),
@@ -12,6 +13,10 @@ const del = require('del'),
   ftp = require('vinyl-ftp'),
   plumber = require('gulp-plumber'),
   imagemin = require("gulp-imagemin"),
+  svgInject = require('gulp-svg-inject'),
+  svgSprite = require('gulp-svg-sprite'),
+
+  // svgMin = require('gulp-svgmin'),
   webpack = require('webpack'),
   webpackStream = require('webpack-stream'),
   webpackConfigDev = require('./webpack.config.dev.js'),
@@ -132,6 +137,16 @@ function images(cb) {
   cb()
 }
 
+function svgInject(cb) {
+  src([source + '**/*.html','/src/**/*.js'])
+    .pipe(svgInject())
+    .pipe(dest(dist))
+
+    cb()
+}
+
+
+ 
 
 function html(cb) {
   // src('src/**/*.html')
@@ -162,7 +177,7 @@ function copyFiles(cb) {
   src([html], {
     base: 'src',
   })
-
+    .pipe(svgInject())
     .pipe(dest('dist'))
   cb()
 
@@ -210,3 +225,4 @@ exports.default = series(styles, scssLint, jsDev, html, bSync, watchFiles);
 exports.build = series(cssMin, jsProd, copyFiles);
 exports.upload = series(deploy);
 exports.cssMin = series(cssMin);
+exports.svg = series(svg);

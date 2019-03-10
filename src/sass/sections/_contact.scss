@@ -1,0 +1,17 @@
+.contact {
+  padding: 3rem 0;
+
+  background-image: linear-gradient(-225deg, rgba(map-get($colors, dark), .9), rgba(lighten(map-get($colors, dark),10%), .9));
+
+  &__title {
+    color: darken(map-get($colors, white), 15%);
+
+    text-transform: uppercase;
+  }
+
+  &__form {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+
+} 

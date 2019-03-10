@@ -1,0 +1,21 @@
+.footer {
+  padding: 1.3rem 0;
+
+  background-color: rgba(map-get($colors, dark), .95);
+
+
+  &__container {
+    display: flex;
+
+    justify-content: space-around;
+
+    color: darken(map-get($colors, white), 20%);
+    
+    font-size: .85rem;
+  }
+
+  &__copyright {
+
+  }
+
+}
