@@ -12,7 +12,7 @@ $mail = new PHPMailer(true);                              // Passing `true` enab
 try {
     //Server settings
     $mail->SMTPDebug = 1;                                 // Enable verbose debug output
-    $mail->isSMTP();                                      // Set mailer to use SMTP
+    // $mail->isSMTP();                                      // Set mailer to use SMTP
     $mail->Host = 's65.linuxpl.com';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
     $mail->Username = 'hrmdrum';                 // SMTP username
@@ -31,10 +31,10 @@ try {
     $subject = $data['subject'];
     $message = $data['message'];
 
-    $body = '<strong>Name:</strong>' . $name . '<br>' .
-            '<strong>Phone:</strong>' . $phone . '<br>' .
-            '<strong>Subject:</strong>' . $subject . '<br><hr><br>' .
-            '<strong>Message:</strong>' . $message;
+    $body = '<strong>Name: </strong>' . $name . '<br>' .
+            '<strong>Phone: </strong>' . $phone . '<br>' .
+            '<strong>Subject: </strong>' . $subject . '<br><hr><br>' .
+            '<strong>Message: </strong>' . $message;
 
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
