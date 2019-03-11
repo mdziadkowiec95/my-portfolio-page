@@ -28,6 +28,8 @@
   }
 
   &__navbar {
+    position: relative;
+
     background-color: rgba(lighten(map-get($colors, dark), 7%), .9);
   }
 
@@ -36,16 +38,16 @@
 
     max-width: 80%;
   }
-  
-  &__content-box { 
+   
+  &__content-box {
+    margin-right: 2rem; 
     margin-top: 5rem;
-    margin-right: 2rem;
-
+   
     padding: 1.5rem;
     
-    // border: 1px solid #fff;
-
-    // box-shadow: 0 0 10px #333; 
+    @include breakpoint(xs) {
+      margin-top: 8rem;
+    }
   }
 
  

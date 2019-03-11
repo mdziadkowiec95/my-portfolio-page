@@ -1,12 +1,12 @@
 const { src, dest, series, parallel, watch } = require('gulp');
 
 const del = require('del'),
-  size = require('gulp-size'),
   sass = require('gulp-sass'),
   scsslint = require('gulp-scss-lint'),
   autoprefixer = require('gulp-autoprefixer'),
   sourcemaps = require('gulp-sourcemaps'),
   cssnano = require('gulp-cssnano'),
+  useref = require('gulp-useref'),
   replace = require('gulp-replace'),
   browsersync = require("browser-sync").create(),
   gutil = require('gulp-util'),
@@ -137,16 +137,16 @@ function images(cb) {
   cb()
 }
 
-function svgInject(cb) {
-  src([source + '**/*.html','/src/**/*.js'])
-    .pipe(svgInject())
-    .pipe(dest(dist))
+// function svgInject(cb) {
+//   src([source + '**/*.html','/src/**/*.js'])
+//     .pipe(svgInject())
+//     .pipe(dest(dist))
 
-    cb()
-}
+//     cb()
+// }
 
 
- 
+
 
 function html(cb) {
   // src('src/**/*.html')
@@ -174,14 +174,20 @@ function cssMin(cb) {
 function copyFiles(cb) {
   const html = 'src/**/*.html';
 
-  src([html], {
-    base: 'src',
-  })
-    .pipe(svgInject())
+  src([html])
+    .pipe(useref())
     .pipe(dest('dist'))
   cb()
 
 }
+
+function copyPHPmailer(cb) {
+  src('./php-mailer/**/*')
+    .pipe(dest(dist))
+  cb()
+}
+
+
 
 
 
@@ -222,7 +228,9 @@ function deploy(cb) {
 };
 
 exports.default = series(styles, scssLint, jsDev, html, bSync, watchFiles);
-exports.build = series(cssMin, jsProd, copyFiles);
+exports.build = series(cssMin, jsProd, images, copyFiles, copyPHPmailer);
 exports.upload = series(deploy);
 exports.cssMin = series(cssMin);
-exports.svg = series(svg);
+exports.copy = series(copyFiles);
+exports.mailer = series(copyPHPmailer);
+// exports.svg = series(svg);

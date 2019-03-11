@@ -5,11 +5,11 @@
 
   position: relative;
 
-  margin: 0 2rem;
+  margin: 2rem auto;
 
-  width: 400px;
+  width: 290px;
 
-  height: 250px;
+  height: 210px; 
 
   box-shadow: 0px 7px 10px rgba(black, 0.5);
 
@@ -17,21 +17,24 @@
 
   overflow: hidden;
 
-  background: url('../images/projects-movie-hunter.jpg') no-repeat center / cover;
+  cursor: default;
+
+  background: no-repeat center / cover;
 
   transition: transform .3s ease-out;
 
-  &:hover {
-    transform: translateY(15px);
+  @include breakpoint(xs) {
+    width: 400px;
 
-    &::before,
-    .card__body {
-      opacity: 1;
-    }
+    height: 250px;
+  }
 
-    .card__body {
-      transform: translateY(0);
-    }
+  @include breakpoint(sm) {
+    // margin: 2rem;
+
+    width: 400px;
+
+    height: 250px;
   }
 
   &::before {
@@ -47,12 +50,65 @@
     transition: opacity .3s ease;
   }
 
+  &--travelize {
+    background-image: url('../images/projects-travelize.jpg');
+  }
+
+  &--movie-hunter {
+    background-image: url('../images/projects-movie-hunter.jpg');
+  }
+
+  &--recipes {
+    background-image: url('../images/projects-recipes.jpg');
+  }
+
+  &--visible {
+    &::before {
+      background-color: rgba(map-get($colors, dark), .5);
+    }
+  }
+
+  &:hover,
+  &--visible {
+    transform: translateY(15px);
+
+    &::before,
+    .card__body,
+    .card__label {
+      opacity: 1 !important;
+    }
+
+    .card__body {
+      transform: translateY(0);
+    }
+  }
+
+  &__label {
+    position: absolute;
+
+    top: 2px;
+    right: 5px;
+
+    color: map-get($colors, white);
+
+    font-size: .8rem;
+    font-weight: 700;
+
+    opacity: 0;
+    
+    transition: opacity .3s ease;
+  }
+
+  
+  
   &__body {
     position: relative;
 
     z-index: map-get($layers, card-body);
 
     padding: 1rem;
+
+    width: 100%;
     
     color: map-get($colors, white);
 
@@ -61,14 +117,18 @@
     transform: translateY(40px);
 
     transition: opacity .3s ease, transform .4s ease;
+  }
 
-    
+  &__description {
+    margin: .5rem 0;
   }
 
   &__links {
-    margin-bottom: 1rem;
-
     text-align: center;
+
+    @include breakpoint(sm) {
+      margin-bottom: 1rem;
+    }
   }
 
   &__link {

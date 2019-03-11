@@ -1,0 +1,21 @@
+.lang-switcher {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  
+  min-width: 75px;
+  height: 100%;
+
+  // padding: 0 1rem;
+
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 3.3;
+
+  vertical-align: middle;
+
+  text-align: center;
+
+  background-color: map-get($colors, accent);
+}

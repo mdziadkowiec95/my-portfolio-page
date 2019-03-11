@@ -14,14 +14,14 @@
 
 @keyframes bouncingMouse {
   0% {
-    transform: translateX(-50%) scale(1);
+    transform: scale(1);
   }
 
   40% {
-    transform: translateX(-50%) scale(1.05);
+    transform: scale(1.05);
   }
 
   70% {
-    transform: translateX(-50%) scale(1);
+    transform: scale(1);
   }
 }
