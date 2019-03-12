@@ -16,4 +16,32 @@
     margin: 0 auto; 
     max-width: 500px;
   }
+
+  &__exam {
+    margin-left: .5rem;
+
+    color: map-get($colors, accent);
+
+    input {
+      background: transparent;
+
+      border: 0;
+
+      border-bottom: 1px solid map-get($colors, white);
+
+      width: 50px;
+
+      padding: .5rem 0;
+
+      font-size: 1.3rem;
+
+      text-align: center;
+
+      color: #fff;
+
+      &:focus {
+        outline: 2px solid map-get($colors, accent);
+      }
+    }
+  }
 } 

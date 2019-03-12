@@ -4899,6 +4899,20 @@ ul {
   .contact__form {
     margin: 0 auto;
     max-width: 500px; }
+  .contact__exam {
+    margin-left: .5rem;
+    color: #B09A68; }
+    .contact__exam input {
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid #fff;
+      width: 50px;
+      padding: .5rem 0;
+      font-size: 1.3rem;
+      text-align: center;
+      color: #fff; }
+      .contact__exam input:focus {
+        outline: 2px solid #B09A68; }
 
 .footer {
   padding: 1.3rem 0;

@@ -1,11 +1,15 @@
 import axios from 'axios';
 
 const form = document.querySelector('.form');
+const fields = [].slice.call(document.querySelectorAll('.field__input'));
+const exam = document.getElementById('form-exam');
+
 
 const sendEmail = (formData) => {
+
   axios({
     method: 'post',
-    url: 'mailer.php',
+    url: '_m_a_i_l_e_r.php',
     data: formData,
   })
     .then(function (response) {
@@ -16,14 +20,19 @@ const sendEmail = (formData) => {
       alert('There was a problem with sending email');
       console.log(`There was a problem with sending email: ${error}`);
     });
+
+
+  fields.forEach(field => field.value = ''); // clear fields
+  exam.value = '';
 }
 
 const handleMailer = (e) => {
   e.preventDefault();
 
   const fields = [].slice.call(document.querySelectorAll('.field__input'));
+  const examinationVal = exam.value;
 
-  if (!form.checkValidity()) {
+  if (!form.checkValidity() || examinationVal !== '7') {
     console.log('Form fields are empty');
   } else {
 
@@ -32,12 +41,11 @@ const handleMailer = (e) => {
       phone: fields[1].value,
       subject: fields[2].value,
       message: fields[3].value,
+      exam: examinationVal,
     }
 
-    sendEmail(formData);
+    sendEmail(formData, fields);
   }
-
-
 
 };
 
