@@ -5,7 +5,7 @@
 
   overflow: hidden;
 
-  height: 100vh;
+  height: 100vh; 
 
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -24,7 +24,11 @@
       linear-gradient(-225deg, rgba(map-get($colors, dark), .7),rgba(lighten(map-get($colors, dark), 10%), .7)),
       url('../images/hero.jpeg') no-repeat center / cover;
 
-      animation: header-bg-animation 1s linear;
+    animation: header-bg-animation 1s linear;
+
+    @include breakpoint(lg) {
+      background-attachment: fixed;
+    }
   }
 
   &__navbar {

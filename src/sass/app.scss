@@ -9,24 +9,24 @@
 @import 'utils/mixins';
 @import 'utils/animations';
 
-
 @import 'base/reset';
 @import 'base/global';
 @import 'base/typography';
 
-@import 'base/layout'; 
- 
-@import 'components/buttons'; 
-@import 'components/input'; 
-@import 'components/nav'; 
-@import 'components/accounts'; 
-@import 'components/lang-switcher'; 
-@import 'components/intro'; 
-@import 'components/scroll-down'; 
-@import 'components/card'; 
+@import 'base/layout';
 
+@import 'components/buttons';
+@import 'components/input';
+@import 'components/nav';
+@import 'components/accounts';
+@import 'components/lang-switcher';
+@import 'components/intro';
+@import 'components/scroll-down';
+@import 'components/card';
 
-@import 'sections/header';  
-@import 'sections/projects';  
-@import 'sections/contact';  
-@import 'sections/footer';  
+@import 'sections/header';
+@import 'sections/about';
+@import 'sections/skills';
+@import 'sections/projects';
+@import 'sections/contact';
+@import 'sections/footer';

@@ -1,0 +1,114 @@
+.skills {
+  padding: 4rem 0;
+
+  background: linear-gradient(-225deg, rgba(map-get($colors, dark), .9),rgba(lighten(map-get($colors, dark), 10%), .9)), url('../images/skills-bg.jpeg') no-repeat bottom / cover;
+
+  &__title {
+    margin-bottom: 4rem;
+
+    color: map-get($colors, accent);
+  }
+
+  &__container {
+    border-left: 1px solid darken(map-get($colors, dark--lighten), 5%);
+    border-right: 1px solid darken(map-get($colors, dark--lighten), 5%);
+  }
+
+  &__inner {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+} 
+
+// single skill item
+.skill {
+  margin: 0 2rem 4rem;
+
+  color: map-get($colors, white);
+
+  text-align: center;
+
+  @include breakpoint(lg) {
+    margin: 0 2rem;
+  }
+
+  &:hover {
+    .skill__name {
+      color: map-get($colors, accent);
+
+      transform: translateY(-5px);
+    }
+
+    .skill__icon {
+      fill: darken(map-get($colors, white), 50%);
+
+      transform: scale(1.05);
+    }
+
+    .skill__list {
+      transform: translateY(10px);
+    }
+  }
+
+  &__name {
+    font-size: .9rem;
+
+    transition: transform .3s ease, color .3s ease;
+
+    &--big {
+      font-size: 1.4rem;
+    }
+    
+  }
+
+  &__icon {
+    max-width: 100px;
+
+    fill: darken(map-get($colors, white), 10%);
+
+    transition: transform .3s ease, fill .3s ease;
+  }
+
+  &__list {
+    position: relative;
+
+    margin-top: 2rem;
+
+    transition: transform .3s ease;
+
+    &::before {
+      @include triangle(map-get($colors, accent), 'down', .7rem);
+
+      top: -1.5rem;
+      left: 50%;
+
+      transform: translateX(-50%);
+    }
+  }
+
+  &__list-item {
+    position: relative;
+
+    margin-top: 1.5rem;
+
+    &:not(:last-child) {
+      &::before {
+        @include pseudo();
+   
+         height: 15px;
+         width: 1px;
+   
+         bottom: -100%;
+         left: 50%;
+   
+         transform: translateX(-50%);
+   
+         background-color: map-get($colors, accent);
+   
+       }
+    }
+  }
+}

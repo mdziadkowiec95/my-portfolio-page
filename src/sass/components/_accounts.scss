@@ -8,8 +8,7 @@
 
   background-color: lighten(map-get($colors, dark), 5%);
 
-  @include backfaceHidden();  
-
+  @include backfaceVisibilityFix();  
 
   &__link {
     display: block;

@@ -50,7 +50,7 @@
   }
 }
 
-@mixin backfaceHidden {
+@mixin backfaceVisibilityFix {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }

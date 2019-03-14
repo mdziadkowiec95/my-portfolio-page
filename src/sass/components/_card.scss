@@ -19,14 +19,14 @@
 
   cursor: default;
 
-  background: no-repeat center / cover;
+  @include backfaceVisibilityFix();
 
   transition: transform .3s ease-out;
 
   @include breakpoint(xs) {
-    width: 400px;
-
     height: 250px;
+
+    width: 400px;
   }
 
   @include breakpoint(sm) {
@@ -40,6 +40,8 @@
   &::before {
     @include pseudo();
 
+    z-index: map-get($layers, card-before);
+
     width: 100%;
     height: 100%;
 
@@ -47,21 +49,43 @@
 
     opacity: 0;
 
+    will-change: transform;
+
     transition: opacity .3s ease;
   }
 
+  &::after {
+    @include pseudo();
+
+    z-index: map-get($layers, card-after);
+
+    width: 100%;
+    height: 100%;
+
+    background: no-repeat center / cover;
+
+    transition: transform .3s ease;
+  }
+
   &--travelize {
-    background-image: url('../images/projects-travelize.jpg');
+    &::after {
+      background-image: url('../images/projects-travelize.jpg');
+    }
   }
 
   &--movie-hunter {
-    background-image: url('../images/projects-movie-hunter.jpg');
+    &::after {
+      background-image: url('../images/projects-movie-hunter.jpg');
+    }
   }
 
   &--recipes {
+    &::after {
     background-image: url('../images/projects-recipes.jpg');
+   }
   }
 
+  // added in JS when is Touch Device
   &--visible {
     &::before {
       background-color: rgba(map-get($colors, dark), .5);
@@ -75,7 +99,11 @@
     &::before,
     .card__body,
     .card__label {
-      opacity: 1 !important;
+      opacity: 1;
+    }
+
+    &::after {
+      transform: scale(1.1);
     }
 
     .card__body {
@@ -86,12 +114,14 @@
   &__label {
     position: absolute;
 
+    z-index: map-get($layers, card-label);
+
     top: 2px;
     right: 5px;
 
     color: map-get($colors, white);
 
-    font-size: .8rem;
+    font-size: .8rem; 
     font-weight: 700;
 
     opacity: 0;
@@ -99,8 +129,6 @@
     transition: opacity .3s ease;
   }
 
-  
-  
   &__body {
     position: relative;
 
@@ -117,6 +145,8 @@
     transform: translateY(40px);
 
     transition: opacity .3s ease, transform .4s ease;
+
+    @include backfaceVisibilityFix();
   }
 
   &__description {
