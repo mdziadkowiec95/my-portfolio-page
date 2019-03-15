@@ -4315,7 +4315,8 @@ html {
 body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  min-height: 100vh; }
+  min-height: 100vh;
+  background-color: #fafafb; }
 
 a:link, a:visited {
   text-decoration: none; }
@@ -4333,6 +4334,7 @@ h1, h2, h3, h4 {
   font-family: "Montserrat", sans-serif; }
 
 h2 {
+  margin-bottom: 2rem;
   font-size: 2.3rem;
   text-align: center; }
 
@@ -4902,11 +4904,67 @@ ul {
         margin-top: 8rem; } }
 
 .about {
-  padding: 10rem 0; }
+  padding: 6rem 0;
+  background-color: #fafafb; }
+  @media (min-width: 992px) {
+    .about__inner {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      padding: 2rem 0; } }
+  .about__portrait {
+    background-color: #2e2834;
+    -webkit-box-shadow: -1px 2px 25px #999;
+            box-shadow: -1px 2px 25px #999;
+    opacity: 0;
+    -webkit-transform: translate(-30px, 30px);
+            transform: translate(-30px, 30px);
+    -webkit-transition: opacity .5s ease, -webkit-transform .5s ease;
+    transition: opacity .5s ease, -webkit-transform .5s ease;
+    transition: transform .5s ease, opacity .5s ease;
+    transition: transform .5s ease, opacity .5s ease, -webkit-transform .5s ease; }
+    @media (min-width: 992px) {
+      .about__portrait {
+        -webkit-box-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+        max-width: 250px; } }
+    .about__portrait.active {
+      -webkit-transform: translate(0);
+              transform: translate(0);
+      opacity: 1; }
+      .about__portrait.active .about__image {
+        -webkit-transform: translate(30px, -30px);
+                transform: translate(30px, -30px); }
+  .about__image {
+    width: 250;
+    height: 250px;
+    -webkit-transition: -webkit-transform 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: -webkit-transform 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-transform 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-filter: grayscale(10%);
+            filter: grayscale(10%); }
+  @media (min-width: 992px) {
+    .about__content {
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      padding-left: 5rem; } }
 
 .skills {
+  position: relative;
   padding: 4rem 0;
   background: linear-gradient(-225deg, rgba(8, 7, 9, 0.9), rgba(34, 29, 38, 0.9)), url("../images/skills-bg.jpeg") no-repeat bottom/cover; }
+  @media (min-width: 992px) {
+    .skills::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      bottom: 0;
+      background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHZpZXdCb3g9IjAgMCAxOTE4Ljc0NiAxMDIuMDUzIj48cGF0aCBkPSJNLTMxLDg0LjgyOSw5MjYuMzgzLTguNDQxLDE4ODcuNzQ2LDkzLjYxMlYtOC40NDFILTMxWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTg4Ny43NDYgOTMuNjEyKSByb3RhdGUoMTgwKSIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg=="); } }
   .skills__title {
     margin-bottom: 4rem;
     color: #B09A68; }
@@ -4994,6 +5052,9 @@ ul {
 
 .projects {
   padding: 4rem 0; }
+  @media (min-width: 992px) {
+    .projects {
+      padding: 6rem 0; } }
   @media (min-width: 768px) {
     .projects__cards {
       display: -webkit-box;

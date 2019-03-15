@@ -477,6 +477,18 @@ eval("var navToggler = document.querySelector('.nav-toggler');\nvar navMenu = do
 
 /***/ }),
 
+/***/ "./src/js/components/runOnScroll.js":
+/*!******************************************!*\
+  !*** ./src/js/components/runOnScroll.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nvar runOnScroll = function runOnScroll() {\n  var elements = [].slice.call(document.querySelectorAll('[data-run-on-scroll]'));\n\n  var checkPosition = function checkPosition(e) {\n    elements.forEach(function (el) {\n      var top = el.getBoundingClientRect().top,\n          halfVisible = top - window.innerHeight + el.offsetHeight / 2 < 0;\n      if (halfVisible) el.classList.add('active');\n      console.log(halfVisible); // console.log(middleOfElement);\n      // console.log(bottomEdge);\n      // console.log(window.innerHeight);\n    });\n  };\n\n  window.addEventListener('scroll', checkPosition);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (runOnScroll);\n\n//# sourceURL=webpack:///./src/js/components/runOnScroll.js?");
+
+/***/ }),
+
 /***/ "./src/js/components/smoothScroll.js":
 /*!*******************************************!*\
   !*** ./src/js/components/smoothScroll.js ***!
@@ -497,7 +509,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var smoo
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_smoothScroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/smoothScroll */ \"./src/js/components/smoothScroll.js\");\n/* harmony import */ var _components_navigation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/navigation */ \"./src/js/components/navigation.js\");\n/* harmony import */ var _components_navigation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_components_navigation__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _components_mailer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/mailer */ \"./src/js/components/mailer.js\");\n/* harmony import */ var _components_cards__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/cards */ \"./src/js/components/cards.js\");\n\n\n\n\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_smoothScroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/smoothScroll */ \"./src/js/components/smoothScroll.js\");\n/* harmony import */ var _components_navigation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/navigation */ \"./src/js/components/navigation.js\");\n/* harmony import */ var _components_navigation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_components_navigation__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _components_mailer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/mailer */ \"./src/js/components/mailer.js\");\n/* harmony import */ var _components_cards__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/cards */ \"./src/js/components/cards.js\");\n/* harmony import */ var _components_runOnScroll__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/runOnScroll */ \"./src/js/components/runOnScroll.js\");\n\n\n\n\n\nObject(_components_runOnScroll__WEBPACK_IMPORTED_MODULE_4__[\"default\"])();\n\n//# sourceURL=webpack:///./src/js/index.js?");
 
 /***/ })
 

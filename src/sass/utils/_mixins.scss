@@ -50,6 +50,25 @@
   }
 }
 
+@mixin triangle-shape-section($position: 'top', $height: 50px) {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  width: 100%;
+  height: $height;
+
+  @if $position == 'top' {
+    top: 0;
+    background: url($triangle-rest-top-url);
+  } @else if $position == 'bottom' {
+    bottom: 0;
+    background: url($triangle-rest-bottom-url);
+  }
+  
+}
+
 @mixin backfaceVisibilityFix {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;

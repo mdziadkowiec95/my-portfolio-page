@@ -1,8 +1,10 @@
 $colors: (
+  default-bg: #fafafb,
   white: #fff,
   accent: #B09A68,
   dark: #080709,
   dark--lighten: #4C4232,
+  
 );
 
 $layers: ( 
@@ -15,8 +17,14 @@ $layers: (
 
 $easings: (
   easeOutEx: cubic-bezier(0.19, 1, 0.22, 1),
+  easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275),
 );
 
 $font-primary: 'Montserrat', sans-serif;
 
 $fa-font-path: "../webfonts";
+
+
+$triangle-rest-top-url: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHZpZXdCb3g9IjAgMCAxOTE4Ljc0NiAxMDIuNzU3Ij48cGF0aCBkPSJNLTMxLDg1LjQ3Miw5MjYuMzgzLTguNDQxLDE4ODcuNzQ2LDk0LjMxNlYtOC40NDFILTMxWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzEgOC40NDEpIiBmaWxsPSIjZmZmIi8+PC9zdmc+';
+
+$triangle-rest-bottom-url: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHZpZXdCb3g9IjAgMCAxOTE4Ljc0NiAxMDIuMDUzIj48cGF0aCBkPSJNLTMxLDg0LjgyOSw5MjYuMzgzLTguNDQxLDE4ODcuNzQ2LDkzLjYxMlYtOC40NDFILTMxWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTg4Ny43NDYgOTMuNjEyKSByb3RhdGUoMTgwKSIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==';
