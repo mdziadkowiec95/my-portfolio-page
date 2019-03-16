@@ -3,9 +3,11 @@
 
   display: inline-block;
 
+  padding: .8rem 1.8rem;
+
   border: solid 1px transparent;
 
-  padding: .8rem 1.8rem;
+  box-shadow: 0 0 1px #999;
 
   font-size: .8rem;
   font-weight: 700;
@@ -16,16 +18,25 @@
 
   color: map-get($colors, white);
 
+  transition: transform .25s ease, box-shadow .25s ease;
+
   cursor: pointer;
+
+  @include hardware();
+
+  &:hover {
+    box-shadow: 0 1px 2px #999;
+
+    transform: scale(1.05);
+  }
 
   &--primary {
     background-color: map-get($colors, accent);
 
-    transition: transform .25s ease;
+    transition-property: transform, box-shadow, opacity;
 
     &:hover {
-      transform: scale(1.05);
-
+      opacity: .8;
     }
   }
 
@@ -35,9 +46,6 @@
     border-color: map-get($colors, accent);
 
     overflow: hidden;
-  
-    
-    transition: transform .25s ease;
 
     &::before {
       @include pseudo();
@@ -62,21 +70,12 @@
 
       transform: translateY(100%);
 
-      // transform-origin: bottom left;
-
       background-color: map-get($colors, accent);
     }
 
     &:hover {
-      transform: scale(1.05);
-
       &::before {
         transform: translateY(0);
-        // top: -130%;
-        // left: -10%;
-
-        // width: 2%;
-        // height: 250%;
 
         opacity: 1;
 

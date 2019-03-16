@@ -32,7 +32,6 @@
 
       overflow: visible;
     }
-
   }
 
   &__portrait {
@@ -126,6 +125,18 @@
     line-height: 1.5;
 
     @include hardware();
+  }
+
+  &__btn-group {
+    margin-top: 2rem;
+  }
+
+  &__btn {
+    @include hardware();
+    
+    &--github {
+      margin-left: .5rem;
+    }
   }
 
 
