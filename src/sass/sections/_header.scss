@@ -1,8 +1,6 @@
 .header {
   position: relative;
 
-  // display: flex;
-
   overflow: hidden;
 
   height: 100vh; 
@@ -34,7 +32,33 @@
   &__navbar {
     position: relative;
 
+    left: 0;
+
+    width: 100%;
+
+    z-index: 1100;
+
     background-color: rgba(lighten(map-get($colors, dark), 7%), .9);
+
+    transition: top .3s ease;
+
+    @include breakpoint(md) {
+      position: fixed;
+
+      top: -75px;
+    }
+
+    &--fixed {
+
+      @include breakpoint(md) {
+        top: 0;
+      }
+   
+    }
+  }
+
+  &__nav {
+    
   }
 
   &__wrapper {
@@ -45,12 +69,12 @@
    
   &__content-box {
     margin-right: 2rem; 
-    margin-top: 5rem;
+    margin-top: 10rem;
    
     padding: 1.5rem;
     
     @include breakpoint(xs) {
-      margin-top: 8rem;
+      margin-top: 13rem;
     }
   }
 

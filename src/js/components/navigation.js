@@ -1,11 +1,6 @@
 const navToggler = document.querySelector('.nav-toggler');
 const navMenu = document.querySelector('.nav');
 
-// navToggler.addEventListener('click', (e) => {
-//   e.preventDefault();
-
-// });
-
 document.querySelector('.header__nav').addEventListener('click', (e) => {
   if (e.target.matches('.nav-toggler, .nav-toggler *')) {
     e.preventDefault();
@@ -18,3 +13,4 @@ document.querySelector('.header__nav').addEventListener('click', (e) => {
   }
 
 });
+

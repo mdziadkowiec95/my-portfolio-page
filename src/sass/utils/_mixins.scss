@@ -19,6 +19,14 @@
   position: $pos;
 }
 
+@mixin img-center($only-margin: false) {
+  @if $only-margin == false {
+    display: block;
+  }
+
+  margin: 0 auto;
+}
+
 
 @mixin triangle($color, $direction, $size: 6px, $position: absolute, $round: false){
   @include pseudo($pos: $position);
@@ -50,7 +58,7 @@
   }
 }
 
-@mixin triangle-shape-section($position: 'top', $height: 50px) {
+@mixin triangle-shape-section($position: 'top', $type: 'normal', $height: 50px) {
   content: '';
 
   position: absolute;
@@ -61,23 +69,31 @@
 
   @if $position == 'top' {
     top: 0;
-    background: url($triangle-rest-top-url);
+    
+    @if $type == 'normal' {
+      background: url($triangle-top-url);
+    } @else if $type == 'rest' {
+      background: url($triangle-rest-top-url);
+    }  
+
   } @else if $position == 'bottom' {
     bottom: 0;
-    background: url($triangle-rest-bottom-url);
+
+    @if $type == 'normal' {
+      background: url($triangle-bottom-url);
+    } @else if $type == 'rest' {
+      background: url($triangle-rest-bottom-url);
+    }  
+    
   }
+
   
 }
-
-@mixin backfaceVisibilityFix {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
 
 @mixin hardware($backface: true, $perspective: 1000) {
   @if $backface {
       backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
   }
   perspective: $perspective;
 }

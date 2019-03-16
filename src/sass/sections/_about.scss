@@ -1,70 +1,131 @@
 .about {
+  position: relative;
+
   padding: 6rem 0;
 
-  background-color: lighten(map-get($colors, dark), 95%);
+  min-height: 100vh;
 
-  &__inner {
+  @include breakpoint(md) {
+    padding: 6rem 0;
+  }
+
+  &::before {
     @include breakpoint(md) {
-      display: flex;
+      @include pseudo();
 
-      padding: 2rem 0;
+      bottom: 0;
+  
+      height: 60%;
+      width: 100%;
+  
+      background: linear-gradient(rgba(map-get($colors, default-bg), 1), rgba(map-get($colors, default-bg), 0)), url($about-bg-url) center;
     }
   }
 
-  &__title {
+  &__inner {
+    overflow-x: hidden;
+
+    @include breakpoint(md) {
+      display: flex; 
+
+      padding-top: 5rem;
+
+      overflow: visible;
+    }
 
   }
 
   &__portrait {
+    margin-top: 2.5rem;
+
     background-color: lighten(map-get($colors, dark), 15%);
 
-     box-shadow: -1px 2px 25px #999;
+    box-shadow: -1px 2px 25px #999;
 
-     opacity: 0;
+    opacity: 0;
 
-     transform: translate(-30px, 30px);
-
-     transition: transform .5s ease, opacity .5s ease;
+    transition: opacity .5s ease;
 
     @include breakpoint(md) {
       flex: 1;
 
-      max-width: 250px;
+      max-width: 350px;
 
-      
+      transform: translate(-30px, 30px);
+
+      transition: transform .5s ease, opacity .5s ease;
     }
 
     &.active {
-      transform: translate(0);
-
       opacity: 1;
 
-      .about__image {
-        transform: translate(30px, -30px);
+      @include breakpoint(md) {
+        transform: translate(0);
+
+        .about__image {
+          transform: translate(30px, -30px);
+        }
       }
     }
   }
 
   &__image {
-    width: 250;
-    height: 250px;
+    @include img-center();
+    
+    transform: translateY(-40px);
+
+    width: 70%;
 
     transition: transform 1.3s map-get($easings, easeOutBack);
 
     filter: grayscale(10%);
+
+    @include breakpoint(md) {
+      width: 350px;
+
+      transform: translateY(0);
+    }
   }
 
 
   &__content {
+    overflow-x: hidden;
+    
+    margin-top: 3rem;
+
+    opacity: 0;
+
+    transform: scale(.95) translateX(20%); 
+
+    transition: transform 1s ease .5s, opacity .5s ease .5s;
+
+    @include hardware();
+
     @include breakpoint(md) {
       flex: 1;
 
-      padding-left: 5rem;
+      margin-top: 0;
+
+      padding-left: 6.5rem;
     }
+
+    &.active {
+      opacity: 1;
+
+      transform: scale(1) translateX(0);
+    }
+  }
+  
+  &__title {
+    text-align: left;
   }
 
   &__paragraph {
-    // color: map-get($colors, white);
+    font-size: 1.1rem;
+
+    line-height: 1.5;
+
+    @include hardware();
   }
 
 

@@ -6,6 +6,7 @@ const del = require('del'),
   autoprefixer = require('gulp-autoprefixer'),
   sourcemaps = require('gulp-sourcemaps'),
   cssnano = require('gulp-cssnano'),
+  combineMq = require('gulp-combine-mq'),
   useref = require('gulp-useref'),
   replace = require('gulp-replace'),
   htmlmin = require('gulp-htmlmin'),
@@ -81,6 +82,9 @@ function styles(cb) {
     .pipe(sass(css.sassOptions))
     .pipe(autoprefixer({
       browsers: ['last 2 versions', '> 1%']
+    }))
+    .pipe(combineMq({
+      beautify: false
     }))
     .pipe(sourcemaps.write('.'))
     .pipe(dest(css.out))
@@ -184,10 +188,11 @@ function copyFiles(cb) {
 
 function htmlMin(cb) {
   src('dist/*.html')
+    .pipe(replace('assets/images/', 'images/'))
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(dest(dist))
 
-    cb()
+  cb()
 }
 
 function copyPHPmailer(cb) {

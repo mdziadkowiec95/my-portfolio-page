@@ -3,31 +3,17 @@
 
   padding: 4rem 0;
 
-  background: linear-gradient(-225deg, rgba(map-get($colors, dark), .9),rgba(lighten(map-get($colors, dark), 10%), .9)), url('../images/skills-bg.jpeg') no-repeat bottom / cover;
+  background: linear-gradient(-225deg, rgba(map-get($colors, dark), .9),rgba(lighten(map-get($colors, dark), 10%), .9)), url('../images/skills-bg.jpg') no-repeat bottom / cover;
 
-  // &::before {
-  //   content: '';
-
-  //   position: absolute;
-
-  //   top:0;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 50px;
-
-
-  //   background: url('data:image/svg+xml;base64,ICA8c3ZnIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHZpZXdCb3g9IjAgMCAxMDAgMTAyIiBoZWlnaHQ9IjUwIiB3aWR0aD0iMTAwJSIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJzdmdjb2xvci1saWdodCI+CiAgICAgIDxwYXRoIGQ9Ik0wIDAgTDUwIDEwMCBMMTAwIDAgWiIgZmlsbD0id2hpdGUiIHN0cm9rZT0id2hpdGUiPjwvcGF0aD4KICA8L3N2Zz4=');
-  //   background: url($triangle-rest-top-url);
-  // }
-
+  @include breakpoint(md) {
+    padding: 6rem 0 10rem 0;
+  }
 
   &::after {
     @include breakpoint(md) {
-      @include triangle-shape-section('bottom');
+      @include triangle-shape-section('bottom', 'rest', 50px);
     } 
   }
-
-
 
   &__title {
     margin-bottom: 4rem;

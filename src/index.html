@@ -14,7 +14,7 @@
 
 <body>
   <header class="header">
-    <div class="header__navbar">
+    <div class="header__navbar header__navbar--fixed">
       <a href="en" class="lang-switcher">ENG</a>
       <div class="container">
         <nav class="header__nav">
@@ -23,10 +23,10 @@
           </a>
           <ul class="nav">
             <li class="nav__item">
-              <a href="#about" class="nav__link is-active">O mnie</a>
+              <a href="#about" class="nav__link">O mnie</a>
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link">Co umiem?</a>
+              <a href="#skills" class="nav__link">Co umiem?</a>
             </li>
             <li class="nav__item">
               <a href="#projects" class="nav__link">Portfolio</a>
@@ -43,14 +43,11 @@
       <div class="header__content-box">
 
         <div class="intro">
-          <!-- <p class="intro__greeting">Hi,</p>
-          <br> -->
           <p class="intro__name">Michał Dziadkowiec</p>
           <br>
           <h1 class="intro__job">Junior <span class="intro__job--accent">Front-End/Web</span>
             Developer</h1>
         </div>
-
       </div>
 
       <div class="accounts">
@@ -93,16 +90,19 @@
 
   <section class="about" id="about">
     <div class="container about__container">
-      <h2 class="about__title">Kika słów o mnie</h2>
+
       <div class="about__inner">
-        <div class="about__portrait" data-run-on-scroll>
-          <img class="about__image" src="assets/images/my-portrait.jpeg" alt="">
+        <div class="about__portrait" data-show-on-scroll>
+          <img class="about__image" src="assets/images/my-portrait.jpg" alt="">
         </div>
-        <div class="about__content">
-          <p class="about__paragraph">
-            Jestem młodym i ambitnym Junior Front-End Developerem z Krakowa. Tworząc projekty staram się przywiązywać dużą uwagę na jakość
-            kodu oraz kwestie związane z optymalizacją stron. Zaangażowanie, ciekawość oraz pracowitość. To one powodują,
-            że nieustannie poszerzam swoją wiedzę oraz zakres umiejętności.
+        <div class="about__content" data-show-on-scroll>
+          <h2 class="about__title">Kilka słów o mnie</h2>
+          <p class="about__paragraph" data-show-on-scroll="">
+            Mam na imię Michał. Jestem Junior Front-End Developerem mieszkającym w Krakowie. Zaangażowanie, ciekawość oraz pracowitość.
+            Te cechy powodują, że nieustannie poszerzam swoją wiedzę oraz zakres umiejętności, ale przede wszystkim zależy
+            mi na zdobywaniu nowych doświadczeń w ciekawych projektach. Tworząc projekty staram się zwracać dużą uwagę na
+            dobre praktyki, responsywność stron, kwestie związane optymalizacją, a także ich dostępność na różnych przeglądarkach.
+            Staram się być na bieżąco jeśli chodzi o nowe rozwiązania zarówno jeśli chodzi o CSS jak i JavaScript.
           </p>
         </div>
       </div>
@@ -110,8 +110,7 @@
     </div>
   </section>
 
-
-  <section class="skills">
+  <section class="skills" id="skills">
     <div class="container skills__container">
       <h2 class="skills__title">Umiejętności</h2>
       <div class="skills__inner">
@@ -122,9 +121,6 @@
             <path d="M5.219 4l.093 1.094 1.75 19.781.063.688.656.187 7.938 2.219.25.062.281-.062 7.938-2.188.656-.187.062-.688 1.782-19.812.093-1.063h-1.093L6.313 4zm2.187 2l17.188.031-1.625 18L16 25.97 9 24.03zm2.407 3l.656 7.469h8.562l-.281 3.218-2.75.75h-.031l-2.75-.75-.156-2.062h-2.5l.343 3.969L15.97 23H16l5.063-1.406L21.75 14h-9.031l-.219-2.531h9.469L22.187 9z"
             />
           </svg>
-          <ul class="skill__list">
-            <!-- <li class="skill__list-item">Semantic HTML</li> -->
-          </ul>
         </div>
 
         <div class="skill">
@@ -134,6 +130,7 @@
               fill-rule="evenodd" />
           </svg>
           <ul class="skill__list">
+            <li class="skill__list-item">Bootstrap 4</li>
             <li class="skill__list-item">SASS/SCSS</li>
             <li class="skill__list-item">BEM</li>
           </ul>
@@ -157,9 +154,6 @@
             <path d="M25 2C12.317 2 2 12.318 2 25s10.317 23 23 23 23-10.318 23-23S37.683 2 25 2zm0 5c4.26 0 8.166 1.485 11.247 3.955-.956.636-1.547 1.74-1.547 2.945 0 1.6.9 3 1.9 4.6.8 1.3 1.6 3 1.6 5.4 0 1.7-.5 3.8-1.5 6.4l-2 6.6-7.1-21.2c1.2-.1 2.3-.2 2.3-.2 1-.1.9-1.6-.1-1.6h-.1s-3.2.3-5.3.3c-1.9 0-5.2-.3-5.2-.3h-.1c-1 0-1.1 1.6-.1 1.6 0 0 1 .1 2.1.2l3.1 8.4L19.9 37l-7.2-21.4c1.2-.1 2.3-.2 2.3-.2 1-.1.9-1.6-.1-1.6h-.1s-2.152.202-4.085.274C14.003 9.78 19.168 7 25 7zM7 25c0-1.8.271-3.535.762-5.174l7.424 20.256C10.261 36.871 7 31.323 7 25zm12.678 17.2L25 26.6l5.685 15.471a17.992 17.992 0 0 1-11.007.129zm15.626-2.45L40.6 24.4c.786-2 1.21-3.742 1.39-5.304A17.944 17.944 0 0 1 43 25c0 6.111-3.046 11.497-7.696 14.75z"
             />
           </svg>
-          <ul class="skill__list">
-            <!-- <li class="skill__list-item">Tworzenie<br>motywów</li> -->
-          </ul>
         </div>
 
         <div class="skill">
@@ -177,18 +171,12 @@
         <div class="skill">
           <h4 class="skill__name skill__name--big">Inne</h4>
           <ul class="skill__list">
+            <li class="skill__list-item">npm</li>
             <li class="skill__list-item">Git</li>
             <li class="skill__list-item">Gulp</li>
             <li class="skill__list-item">Webpack</li>
           </ul>
         </div>
-
-
-
-
-
-
-
       </div>
     </div>
   </section>
@@ -283,11 +271,7 @@
   </section>
 
   <section class="contact" id="contact">
-    <svg preserveAspectRatio="none" viewBox="0 0 100 102" height="50" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg"
-      class="svgcolor-light">
-      <path d="M0 0 L50 100 L100 0 Z" fill="white" stroke="white"></path>
-    </svg>
-    <div class="container contact__container">
+    <div class="container">
       <div class="contact__form">
         <h2 class="contact__title">Skontaktuj się</h2>
         <form class="form" action="#" method="POST">

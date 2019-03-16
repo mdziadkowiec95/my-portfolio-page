@@ -19,8 +19,6 @@
 
   cursor: default;
 
-  @include backfaceVisibilityFix();
-
   transition: transform .3s ease-out;
 
   @include breakpoint(xs) {
@@ -30,8 +28,6 @@
   }
 
   @include breakpoint(sm) {
-    // margin: 2rem;
-
     width: 400px;
 
     height: 250px;
@@ -55,8 +51,9 @@
   }
 
   &::after {
+    @include hardware();
     @include pseudo();
-
+    
     z-index: map-get($layers, card-after);
 
     width: 100%;
@@ -130,6 +127,8 @@
   }
 
   &__body {
+    @include hardware(); 
+    
     position: relative;
 
     z-index: map-get($layers, card-body);
@@ -145,8 +144,6 @@
     transform: translateY(40px);
 
     transition: opacity .3s ease, transform .4s ease;
-
-    @include backfaceVisibilityFix();
   }
 
   &__description {
