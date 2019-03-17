@@ -25,3 +25,14 @@
     transform: scale(1);
   }
 }
+
+@keyframes typing {
+  from { max-width: 0 }
+  to { max-width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #fff; }
+}

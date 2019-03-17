@@ -22,7 +22,7 @@
 
   cursor: pointer;
 
-  @include hardware();
+  @include hardware(); 
 
   &:hover {
     box-shadow: 0 1px 2px #999;

@@ -27,11 +27,13 @@
   }
 
   &__inner {
-    display: flex;
+    @include breakpoint(xs) {
+      display: flex;
 
-    flex-wrap: wrap;
-
-    justify-content: center;
+      flex-wrap: wrap;
+  
+      justify-content: center;
+    }
   }
 } 
 

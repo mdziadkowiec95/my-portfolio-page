@@ -6,7 +6,7 @@
   min-height: 100vh;
 
   @include breakpoint(md) {
-    padding: 6rem 0;
+    padding: 5rem 0;
   }
 
   &::before {
@@ -35,7 +35,9 @@
   }
 
   &__portrait {
-    margin-top: 2.5rem;
+    margin: 2.5rem auto 0 auto;
+
+    max-width: 400px;
 
     background-color: lighten(map-get($colors, dark), 15%);
 
@@ -106,6 +108,8 @@
       margin-top: 0;
 
       padding-left: 6.5rem;
+
+      overflow: visible;
     }
 
     &.active {
@@ -128,7 +132,17 @@
   }
 
   &__btn-group {
-    margin-top: 2rem;
+    display: block;
+
+    margin: 2rem auto 2rem auto;
+
+    text-align: center;
+
+    @include breakpoint(md) {
+      margin: 2rem 0;
+
+      text-align: left;
+    }
   }
 
   &__btn {

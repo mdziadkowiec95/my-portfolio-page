@@ -242,7 +242,7 @@ function deploy(cb) {
 };
 
 exports.default = series(styles, scssLint, jsDev, html, bSync, watchFiles);
-exports.build = series(cssMin, jsProd, images, copyFiles, htmlMin, copyPHPmailer);
+exports.build = series(cssMin, jsProd, images, copyFiles, copyPHPmailer);
 exports.upload = series(deploy);
 exports.cssMin = series(cssMin);
 exports.copy = series(copyFiles);

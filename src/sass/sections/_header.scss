@@ -68,13 +68,13 @@
   }
    
   &__content-box {
-    margin-right: 2rem; 
-    margin-top: 10rem;
-   
-    padding: 1.5rem;
+    margin-top: 6rem; 
+    margin-top: 17vh;
+      
+    padding: 2rem;
     
     @include breakpoint(xs) {
-      margin-top: 13rem;
+      margin-top: 35vh;
     }
   }
 
