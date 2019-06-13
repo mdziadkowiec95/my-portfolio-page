@@ -1,6 +1,7 @@
 const { src, dest, series, parallel, watch } = require('gulp');
 
 const del = require('del'),
+  dotenv = require('dotenv').config(),
   sass = require('gulp-sass'),
   scsslint = require('gulp-scss-lint'),
   autoprefixer = require('gulp-autoprefixer'),
@@ -55,8 +56,10 @@ const img = {
 // BrowserSync settings
 const syncOpts = {
   server: {
-    baseDir: source
-    // index: "index.html"
+    baseDir: source,
+    serveStaticOptions: {
+      extensions: ['html']
+    }
   },
   open: true,
   notify: true
@@ -234,9 +237,8 @@ function getFtpConnection() {
 function deploy(cb) {
   var conn = getFtpConnection()
 
-
   src(localFilesGlob, { base: './dist', buffer: false })
-    .pipe(conn.newer(remoteFolder)) // only upload newer files
+    // .pipe(conn.newer(remoteFolder)) // only upload newer files
     .pipe(conn.dest(remoteFolder))
   cb()
 };

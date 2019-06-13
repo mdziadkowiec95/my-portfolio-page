@@ -59,35 +59,33 @@
 }
 
 @mixin triangle-shape-section($position: 'top', $type: 'normal', $height: 50px) {
-  content: '';
+  // content: '';
 
-  position: absolute;
+  // position: absolute;
 
-  left: 0;
-  width: 100%;
-  height: $height;
+  // left: 0;
+  // width: 100%;
+  // height: $height;
 
-  @if $position == 'top' {
-    top: 0;
+  // @if $position == 'top' {
+  //   top: 0;
     
-    @if $type == 'normal' {
-      background: url($triangle-top-url);
-    } @else if $type == 'rest' {
-      background: url($triangle-rest-top-url);
-    }  
+  //   @if $type == 'normal' {
+  //     background: url($triangle-top-url);
+  //   } @else if $type == 'rest' {
+  //     background: url($triangle-rest-top-url);
+  //   }  
 
-  } @else if $position == 'bottom' {
-    bottom: 0;
+  // } @else if $position == 'bottom' {
+  //   bottom: 0;
 
-    @if $type == 'normal' {
-      background: url($triangle-bottom-url);
-    } @else if $type == 'rest' {
-      background: url($triangle-rest-bottom-url);
-    }  
+  //   @if $type == 'normal' {
+  //     background: url($triangle-bottom-url);
+  //   } @else if $type == 'rest' {
+  //     background: url($triangle-rest-bottom-url);
+  //   }  
     
-  }
-
-  
+  // }
 }
 
 @mixin hardware($backface: true, $perspective: 1000) {

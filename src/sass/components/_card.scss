@@ -82,6 +82,17 @@
    }
   }
 
+  &--foodify {
+    &::after {
+    background-image: url('../images/projects-foodify.jpg');
+   }
+  }
+
+  &--odaconnect {
+    &::after {
+    background-image: url('../images/projects-odaconnect.jpg');
+   }
+  }
   // added in JS when is Touch Device
   &--visible {
     &::before {
